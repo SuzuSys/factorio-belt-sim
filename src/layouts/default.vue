@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+//
+</script>
+
 <template>
   <v-main>
     <router-view />
@@ -5,7 +9,3 @@
 
   <AppFooter />
 </template>
-
-<script lang="ts" setup>
-  //
-</script>
