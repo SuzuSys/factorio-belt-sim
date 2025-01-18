@@ -7,7 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppFooter: typeof import('./components/AppFooter.vue')['default']
     AppHeader: typeof import('./components/AppHeader.vue')['default']
     Canvas: typeof import('./components/Canvas.vue')['default']
     GridLoader: typeof import('./components/GridLoader.vue')['default']
