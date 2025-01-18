@@ -2,4 +2,7 @@
 
 <template>
   <HelloWorld />
+  <div>
+    <GridLoader />
+  </div>
 </template>
