@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useWindowSize } from "@/composable/useWindowSize";
+import { useWindowSize } from "@/composables/useWindowSize";
 const windowSize = useWindowSize();
 const splitterNagativeMarginX = 1;
 const splitterWidthPx = 8;
@@ -59,7 +59,5 @@ const vMainHeight = computed(
     </v-sheet>
   </v-container>
 
-  <div>
-    <GridLoader />
-  </div>
+  <Loader />
 </template>

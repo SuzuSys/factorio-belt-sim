@@ -9,7 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppHeader: typeof import('./components/AppHeader.vue')['default']
     Canvas: typeof import('./components/Canvas.vue')['default']
-    GridLoader: typeof import('./components/GridLoader.vue')['default']
+    Loader: typeof import('./components/Loader.vue')['default']
     Menu: typeof import('./components/Menu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
