@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useImageStore, stateProps, type StateProps } from "@/stores/app";
+import { useImageStore, stateProps, type StateProps } from "@/stores/bitmaps";
 
 const store = useImageStore();
 const imgs: Map<StateProps, HTMLImageElement> = new Map();

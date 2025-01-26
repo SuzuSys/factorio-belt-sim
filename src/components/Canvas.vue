@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useImageStore } from "@/stores/app";
+import { useImageStore } from "@/stores/bitmaps";
+import { renderer } from "@/renderers";
 import { type ShallowRef } from "vue";
 const props = defineProps<{
   width: number;
@@ -21,24 +22,21 @@ let img:
 
 onMounted(() => {
   ctx = canvas.value?.getContext("2d");
-  if (!store.loaded) return;
-  img = store.grid;
-  if (!img) return;
-  ctx?.drawImage(img, -50, 0);
+  if (!ctx || !store.loaded) return;
+  renderer(ctx);
 });
 
 watch(
   () => store.loaded,
   () => {
-    img = store.grid;
-    if (!img) return;
-    ctx?.drawImage(img, -50, 0);
+    if (!ctx) return;
+    renderer(ctx);
   }
 );
 
 onUpdated(() => {
-  if (!img) return;
-  ctx?.drawImage(img, -50, 0);
+  if (!ctx) return;
+  renderer(ctx);
 });
 </script>
 
