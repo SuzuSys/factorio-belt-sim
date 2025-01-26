@@ -23,6 +23,7 @@ async function loaded(name: StateProps) {
 <template>
   <img
     v-for="name in stateProps"
+    v-if="!store.loaded"
     :ref="(el) => elementRegister(el, name)"
     v-show="false"
     :src="`/factorio/${name}.png`"
