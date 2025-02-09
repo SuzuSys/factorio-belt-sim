@@ -11,10 +11,18 @@ export function useRenderer(
   return function renderer(ctx: CanvasRenderingContext2D) {
     if (!imageStore.loaded) return;
     ctx.clearRect(0, 0, canvasWidth.value, canvasHeight.value);
+    ctx.save();
+    ctx.translate(
+      Math.floor(canvasWidth.value / 2),
+      Math.floor(canvasHeight.value / 2)
+    );
     const img = imageStore as Record<StateProps, ImageBitmap>;
-    draw(ctx, img.grid, 0, 0, 64, 0, 0);
+    draw(ctx, img.grid, 0, 0, 1, 1, 0);
+    ctx.restore();
   };
 }
+
+const pixelPerBlock = 64;
 
 export function draw(
   ctx: CanvasRenderingContext2D,
@@ -29,11 +37,11 @@ export function draw(
     img,
     sx,
     sy,
-    sSize,
-    sSize,
-    controlStore.zeroX + dx,
-    controlStore.zeroY + dy,
-    controlStore.blockSize,
-    controlStore.blockSize
+    sSize * pixelPerBlock,
+    sSize * pixelPerBlock,
+    controlStore.blockSize * (controlStore.zeroX + dx),
+    controlStore.blockSize * (controlStore.zeroY + dy),
+    controlStore.blockSize * sSize,
+    controlStore.blockSize * sSize
   );
 }
