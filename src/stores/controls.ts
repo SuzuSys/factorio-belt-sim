@@ -1,26 +1,9 @@
 import { defineStore } from "pinia";
+import getBlockSize from "@/renderer/zoom";
+import velocity from "@/renderer/move";
+import params from "@/renderer/params";
 
-const lambda = 64;
-const minBlockSize = 1;
-const maxBlockSize = 128;
-const slopeA = 1;
-const slopeB = 8;
-
-const xmid =
-  (lambda * slopeB + minBlockSize - maxBlockSize) / (slopeB - slopeA);
-const ymid = slopeA * xmid + minBlockSize;
-const condition =
-  lambda < (2 * (maxBlockSize - minBlockSize)) / (slopeA + slopeB);
-const hFunc = xmid / (lambda - 2 * xmid);
-
-function yFunc(x: number) {
-  function tFunc(x: number) {
-    const sqr = Math.sqrt(x / (lambda - 2 * xmid) + Math.pow(hFunc, 2));
-    return -hFunc + (condition ? sqr : -sqr);
-  }
-  const t = tFunc(x);
-  return Math.pow(t, 2) * (maxBlockSize - 2 * minBlockSize) + 2 * t * ymid;
-}
+const { lambda } = params;
 
 export const useControlStore = defineStore("controler", {
   state: () => ({
@@ -30,7 +13,7 @@ export const useControlStore = defineStore("controler", {
   }),
   getters: {
     blockSize(state): number {
-      return Math.round(yFunc(state.wheelPos));
+      return getBlockSize(state.wheelPos);
     },
   },
   actions: {
@@ -39,6 +22,18 @@ export const useControlStore = defineStore("controler", {
     },
     wheelDecrement() {
       if (this.wheelPos > 0) this.wheelPos--;
+    },
+    posXIncrement() {
+      this.zeroX += velocity(this.blockSize);
+    },
+    posYIncrement() {
+      this.zeroY += velocity(this.blockSize);
+    },
+    posXDecrement() {
+      this.zeroX -= velocity(this.blockSize);
+    },
+    posYDecrement() {
+      this.zeroY -= velocity(this.blockSize);
     },
   },
 });

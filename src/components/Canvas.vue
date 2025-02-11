@@ -3,6 +3,7 @@ import { useImageStore } from "@/stores/bitmaps";
 import { useRenderer } from "@/renderer";
 import { type ShallowRef } from "vue";
 import { useControlStore } from "@/stores/controls";
+import { useKeyControls } from "@/composables/useKeyControls";
 const props = defineProps<{
   width: number;
   height: number;
@@ -19,11 +20,18 @@ const canvasWidth = computed(() => props.width);
 const canvasHeight = computed(() => props.height);
 const renderer = useRenderer(canvasWidth, canvasHeight);
 
+useKeyControls();
+
 let ctx: CanvasRenderingContext2D | null | undefined;
 
 onMounted(() => {
   ctx = canvas.value?.getContext("2d");
   if (!ctx || !imageStore.loaded) return;
+  renderer(ctx);
+});
+
+watch(controlStore, () => {
+  if (!ctx) return;
   renderer(ctx);
 });
 
@@ -45,7 +53,6 @@ function expand(e: WheelEvent) {
   if (!ctx) return;
   if (e.deltaY > 0) controlStore.wheelIncrement();
   else controlStore.wheelDecrement();
-  renderer(ctx);
 }
 </script>
 

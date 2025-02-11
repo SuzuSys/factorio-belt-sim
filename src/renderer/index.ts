@@ -40,7 +40,7 @@ export function draw(
     sSize * pixelPerBlock,
     sSize * pixelPerBlock,
     controlStore.blockSize * (controlStore.zeroX + dx),
-    controlStore.blockSize * (controlStore.zeroY + dy),
+    Math.round(controlStore.blockSize * (controlStore.zeroY + dy)),
     controlStore.blockSize * sSize,
     controlStore.blockSize * sSize
   );

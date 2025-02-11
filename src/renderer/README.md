@@ -1,6 +1,6 @@
-# Controls
+# Zoom
 
-This page explains about some variables of `controls.ts`.
+This page explains about some variables of `zoom.ts`.
 
 ## Concepts
 
