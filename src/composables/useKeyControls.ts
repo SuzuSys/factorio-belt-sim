@@ -16,7 +16,7 @@ export function useKeyControls() {
     s: false,
     d: false,
   };
-  let timerId: number;
+  let timerId: NodeJS.Timeout;
   let moving = false;
   function move() {
     if (keyFlag.w !== keyFlag.s) {
