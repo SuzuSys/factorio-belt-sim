@@ -24,9 +24,9 @@ export function yFunc(t: number) {
 }
 
 /**
- *
- * @param wheelPos is positive integer
- * @returns is positive integer
+ * Get BlockSize from wheelPos
+ * @param wheelPos is positive integer. Range: [0, params.lambda]
+ * @returns is positive integer. Range: [params.minBlockSize, params.maxBlockSize]
  */
 export default function getBlockSize(wheelPos: number) {
   return Math.round(yFunc(tFunc(wheelPos)));

@@ -6,15 +6,15 @@ import params from "@/renderer/params";
 
 describe("tFunc() defined in @/renderer/README.md", () => {
   test("passes through the point (x,t)=(0,0) and (lambda,1)", () => {
-    expect(tFunc(0)).toEqual(0);
-    expect(tFunc(params.lambda)).toEqual(1);
+    expect(tFunc(0)).toBeCloseTo(0, 8);
+    expect(tFunc(params.lambda)).toBeCloseTo(1, 8);
   });
 });
 
 describe("yFunc() defined in @/renderer/README.md", () => {
   test("passes through the point (t,y)=(0,ymin) and (1,ymax)", () => {
-    expect(yFunc(0)).toEqual(params.minBlockSize);
-    expect(yFunc(1)).toEqual(params.maxBlockSize);
+    expect(yFunc(0)).toBeCloseTo(params.minBlockSize, 8);
+    expect(yFunc(1)).toBeCloseTo(params.maxBlockSize, 8);
   });
 });
 

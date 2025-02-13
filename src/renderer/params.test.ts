@@ -24,3 +24,10 @@ describe("params defined in @renderer/README.md#Zoom", () => {
     expect(Number.isInteger(params.maxBlockSize)).toBe(true);
   });
 });
+
+describe("params about move.ts", () => {
+  test("velAtMinBlock and velAtMaxBlock are positive numbers", () => {
+    expect(params.velAtMinBlock).toBeGreaterThan(0);
+    expect(params.velAtMaxBlock).toBeGreaterThan(0);
+  });
+});
