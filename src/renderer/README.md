@@ -1,6 +1,6 @@
 # Zoom
 
-This page explains about some variables of `zoom.ts`.
+This page explains about `getBlockSize()` and some variables in `zoom.ts`.
 
 ## Concepts
 
@@ -70,7 +70,7 @@ The control points of the curve are $(0,y_\text{min})$, $(\lambda,y_\text{max})$
 $$
 \begin{align}
 x&=t^2\left(\lambda-2x_\text{mid}\right)+2t\,x_\text{mid}\\
-y&=t^2\left(y_\text{max}-2y_\text{mid}\right)+2t\,y_\text{mid}
+y&=t^2\left(y_\text{max}-y_\text{min}-2\Delta_Ax_\text{mid}\right)+2t\Delta_Ax_\text{mid}+y_\text{min}
 \end{align}
 $$
 
