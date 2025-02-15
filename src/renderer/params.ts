@@ -1,9 +1,10 @@
 export default {
+  sourceBlockSize: 64,
   lambda: 64,
   minBlockSize: 1,
   maxBlockSize: 128,
   slopeA: 1,
   slopeB: 8,
-  velAtMinBlock: 1,
-  velAtMaxBlock: 0.01,
+  blockStepAtMin: 2,
+  blockStepAtMax: 0.125,
 };

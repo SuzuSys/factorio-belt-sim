@@ -1,3 +1,4 @@
+import params from "@/renderer/params";
 import { useImageStore, type StateProps } from "@/stores/bitmaps";
 import { useControlStore } from "@/stores/controls";
 
@@ -22,8 +23,7 @@ export function useRenderer(
   };
 }
 
-const pixelPerBlock = 64;
-
+/** All number args must be integer */
 export function draw(
   ctx: CanvasRenderingContext2D,
   img: ImageBitmap,
@@ -33,15 +33,16 @@ export function draw(
   dx: number,
   dy: number
 ) {
+  const blockSize = Math.round(controlStore.blockSize);
   ctx.drawImage(
     img,
     sx,
     sy,
-    sSize * pixelPerBlock,
-    sSize * pixelPerBlock,
-    controlStore.blockSize * (controlStore.zeroX + dx),
-    Math.round(controlStore.blockSize * (controlStore.zeroY + dy)),
-    controlStore.blockSize * sSize,
-    controlStore.blockSize * sSize
+    sSize * params.sourceBlockSize,
+    sSize * params.sourceBlockSize,
+    controlStore.zeroX + blockSize * dx,
+    controlStore.zeroY + blockSize * dy,
+    blockSize * sSize,
+    blockSize * sSize
   );
 }

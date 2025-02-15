@@ -1,6 +1,12 @@
 import { describe, expect, test } from "vitest";
 import params from "@/renderer/params";
 
+describe("blockSize", () => {
+  test("should be a positive integer", () => {
+    expect(Number.isInteger(params.sourceBlockSize)).toBe(true);
+  });
+});
+
 describe("params defined in @renderer/README.md#Zoom", () => {
   test("satisfy constraints (1)", () => {
     expect(params.minBlockSize).toBeGreaterThanOrEqual(1);
@@ -26,8 +32,8 @@ describe("params defined in @renderer/README.md#Zoom", () => {
 });
 
 describe("params about move.ts", () => {
-  test("velAtMinBlock and velAtMaxBlock are positive numbers", () => {
-    expect(params.velAtMinBlock).toBeGreaterThan(0);
-    expect(params.velAtMaxBlock).toBeGreaterThan(0);
+  test("blockStepAtMin and blockStepAtMax are positive numbers", () => {
+    expect(params.blockStepAtMin).toBeGreaterThan(0);
+    expect(params.blockStepAtMax).toBeGreaterThan(0);
   });
 });

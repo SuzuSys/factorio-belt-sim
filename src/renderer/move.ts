@@ -1,15 +1,17 @@
 import params from "@/renderer/params";
 
-const { minBlockSize, maxBlockSize, velAtMinBlock, velAtMaxBlock } = params;
+const { minBlockSize, maxBlockSize, blockStepAtMin, blockStepAtMax } = params;
 
-const velSlope =
-  (velAtMaxBlock - velAtMinBlock) / (maxBlockSize - minBlockSize);
+const stepAtMin = blockStepAtMin * minBlockSize;
+const stepAtMax = blockStepAtMax * maxBlockSize;
+
+const velSlope = (stepAtMax - stepAtMin) / (maxBlockSize - minBlockSize);
 
 /**
  * Get step size from blockSize
- * @param blockSize is positive integer. Range: [params.minBlockSize, params.maxBlockSize]
- * @returns is positive real number.
+ * @param blockSize is positive real number. Range: [params.minBlockSize, params.maxBlockSize]
+ * @returns is positive integer.
  */
-export default function velocity(blockSize: number) {
-  return velSlope * (blockSize - minBlockSize) + velAtMinBlock;
+export default function pixelStep(blockSize: number) {
+  return Math.round(velSlope * (blockSize - minBlockSize) + stepAtMin);
 }

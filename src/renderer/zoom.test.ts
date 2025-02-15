@@ -18,29 +18,26 @@ describe("yFunc() defined in @/renderer/README.md", () => {
   });
 });
 
-describe("yFunc(tFunc()) defined in @/renderer/README.md", () => {
+describe("getBlockSize() defined in @/renderer/README.md", () => {
+  test("passes through the point (x,y)=(0,ymin) and (lambda,ymax)", () => {
+    expect(getBlockSize(0)).toEqual(params.minBlockSize);
+    expect(getBlockSize(params.lambda)).toEqual(params.maxBlockSize);
+  });
   test("returns a monotonically increasing sequence", () => {
-    let prev = yFunc(tFunc(0));
+    let prev = getBlockSize(0);
     for (let w = 1; w <= params.lambda; w++) {
-      const b = yFunc(tFunc(w));
+      const b = getBlockSize(w);
       expect(b).toBeGreaterThan(prev);
       prev = b;
     }
   });
   test("returns a convex sequence", () => {
-    let p1 = yFunc(tFunc(0));
-    let p2 = yFunc(tFunc(1));
+    let p1 = getBlockSize(0);
+    let p2 = getBlockSize(1);
     for (let w = 2; w <= params.lambda; w++) {
-      const p3 = yFunc(tFunc(w));
+      const p3 = getBlockSize(w);
       expect(p1 + p3).toBeGreaterThanOrEqual(2 * p2);
       [p1, p2] = [p2, p3];
     }
-  });
-});
-
-describe("getBlockSize() defined in @/renderer/README.md", () => {
-  test("passes through the point (x,y)=(0,ymin) and (lambda,ymax)", () => {
-    expect(getBlockSize(0)).toEqual(params.minBlockSize);
-    expect(getBlockSize(params.lambda)).toEqual(params.maxBlockSize);
   });
 });
