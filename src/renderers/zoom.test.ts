@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
-import getBlockSize, { tFunc, yFunc } from "@/renderer/zoom";
-import params from "@/renderer/params";
+import getBlockSize, { tFunc, yFunc } from "@/renderers/zoom";
+import params from "@/renderers/params";
 
 // ref: ./README.md
 

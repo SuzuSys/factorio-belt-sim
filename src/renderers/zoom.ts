@@ -1,4 +1,4 @@
-import params from "@/renderer/params";
+import params from "@/renderers/params";
 
 // Desmos graph: https://www.desmos.com/calculator/hrtfe5027m
 

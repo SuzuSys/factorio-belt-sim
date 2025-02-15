@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import getBlockSize from "@/renderer/zoom";
-import pixelStep from "@/renderer/move";
-import params from "@/renderer/params";
+import getBlockSize from "@/renderers/zoom";
+import pixelStep from "@/renderers/move";
+import params from "@/renderers/params";
 
 const { lambda } = params;
 

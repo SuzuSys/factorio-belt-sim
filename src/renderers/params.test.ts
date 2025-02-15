@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import params from "@/renderer/params";
+import params from "@/renderers/params";
 
 describe("blockSize", () => {
   test("should be a positive integer", () => {

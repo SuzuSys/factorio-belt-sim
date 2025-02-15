@@ -1,4 +1,4 @@
-import pixelStep from "@/renderer/move";
+import pixelStep from "@/renderers/move";
 import { describe, expect, test } from "vitest";
 import params from "./params";
 

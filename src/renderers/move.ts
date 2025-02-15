@@ -1,4 +1,4 @@
-import params from "@/renderer/params";
+import params from "@/renderers/params";
 
 const { minBlockSize, maxBlockSize, blockStepAtMin, blockStepAtMax } = params;
 

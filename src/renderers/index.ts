@@ -1,4 +1,4 @@
-import params from "@/renderer/params";
+import params from "@/renderers/params";
 import { useImageStore, type StateProps } from "@/stores/bitmaps";
 import { useControlStore } from "@/stores/controls";
 
@@ -18,7 +18,7 @@ export function useRenderer(
       Math.floor(canvasHeight.value / 2)
     );
     const img = imageStore as Record<StateProps, ImageBitmap>;
-    draw(ctx, img.grid, 0, 0, 1, 1, 0);
+    draw(ctx, img.grid, 0, 0, 1, 0, 0);
     ctx.restore();
   };
 }
