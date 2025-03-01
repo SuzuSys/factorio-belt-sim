@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useImageStore } from "@/stores/bitmaps";
-import { useRenderer } from "@/renderers";
+import { useRenderer } from "@/renderers/renderer";
 import { type ShallowRef } from "vue";
 import { useControlStore } from "@/stores/controls";
 import { useKeyControls } from "@/composables/useKeyControls";

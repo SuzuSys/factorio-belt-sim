@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import getBlockSize from "@/renderers/zoom";
-import pixelStep from "@/renderers/move";
 import params from "@/renderers/params";
 
 const { lambda } = params;
@@ -9,9 +8,9 @@ export const useControlStore = defineStore("controler", {
   state: () => ({
     /** positive integer. Range: [0, params.lambda] */
     wheelPos: 48,
-    /** integer */
+    /** real number. (unit: block) */
     zeroX: 0,
-    /** integer */
+    /** real number. (unit: block) */
     zeroY: 0,
   }),
   getters: {
@@ -28,16 +27,16 @@ export const useControlStore = defineStore("controler", {
       if (this.wheelPos > 0) this.wheelPos--;
     },
     posXIncrement() {
-      this.zeroX += pixelStep(this.blockSize);
+      this.zeroX += params.blockStep;
     },
     posYIncrement() {
-      this.zeroY += pixelStep(this.blockSize);
+      this.zeroY += params.blockStep;
     },
     posXDecrement() {
-      this.zeroX -= pixelStep(this.blockSize);
+      this.zeroX -= params.blockStep;
     },
     posYDecrement() {
-      this.zeroY -= pixelStep(this.blockSize);
+      this.zeroY -= params.blockStep;
     },
   },
 });

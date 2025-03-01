@@ -20,12 +20,12 @@ export function useKeyControls() {
   let moving = false;
   function move() {
     if (keyFlag.w !== keyFlag.s) {
-      if (keyFlag.w) controlStore.posYDecrement();
-      else if (keyFlag.s) controlStore.posYIncrement();
+      if (keyFlag.w) controlStore.posYIncrement();
+      else if (keyFlag.s) controlStore.posYDecrement();
     }
     if (keyFlag.a !== keyFlag.d) {
-      if (keyFlag.a) controlStore.posXDecrement();
-      else if (keyFlag.d) controlStore.posXIncrement();
+      if (keyFlag.a) controlStore.posXIncrement();
+      else if (keyFlag.d) controlStore.posXDecrement();
     }
   }
 

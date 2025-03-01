@@ -157,8 +157,8 @@ $$
 \begin{align}
 t+h(\lambda)
 \begin{cases}
->0 & (\lambda < a_\lambda) \\
-<0 & (\lambda > a_\lambda)
+\gt0 & (\lambda < a_\lambda) \\
+\lt0 & (\lambda > a_\lambda)
 \end{cases}
 \end{align}
 $$

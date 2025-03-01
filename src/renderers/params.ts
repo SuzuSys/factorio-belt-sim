@@ -5,6 +5,5 @@ export default {
   maxBlockSize: 128,
   slopeA: 1,
   slopeB: 8,
-  blockStepAtMin: 2,
-  blockStepAtMax: 0.125,
+  blockStep: 0.2,
 };
